@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome to the home page!</p>
+
+    <form>
+        <label for="control">Control</label>
+        <input type="checkbox" name="control" id="control"><br>
+        <label for="shift">Shift</label>
+        <input type="checkbox" name="shift" id="shift"><br>
+        <label for="alt">Alt</label>
+        <input type="checkbox" name="alt" id="alt"><br>
+        <button  name="key" value="backspace">Backspace</button>
+        <button  name="key" value="enter">Enter</button>
+        <button  name="key" value="space">Space</button>
+        <button  name="key" value="tab">Tab</button>
+        <button  name="key" value="esc">Escape</button>
+        <button  name="key" value="caps_lock">Caps Lock</button>
+        <button name="key" value="num_lock">Num Lock</button>
+        <button name="key" value="scroll_lock">Scroll Lock</button>
+        <table>
+            {% for line_of_keys in keysline %}
+                <tr>
+                    {% for key in line_of_keys %}
+                        <td>
+                            <button name="key" value="{{ key }}">{{ key }}</button>
+                        </td>    
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <div>
+            <h3>Multimedia</h3>
+            <button  name="key" value="volume_up">Volume Up</button>
+            <button  name="key" value="volume_down">Volume Down</button>
+            <button  name="key" value="pause">Pause</button>
+            <div class="volume-slider">
+                <input type="range" id="volume-slider" min="0" max="100" value="{{volume*100}}">
+                <label for="volume-slider">Volume: <span id="volume-value">{{(volume*100)|rnd0}}%</span></label>
+            </div>
+        </div>
+    </form>
+{% endblock %}
