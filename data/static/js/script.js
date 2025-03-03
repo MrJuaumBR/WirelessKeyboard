@@ -1,36 +1,45 @@
-// script.js
-var controlCheckbox = document.getElementById('control');
-var shiftCheckbox = document.getElementById('shift');
-var altCheckbox = document.getElementById('alt');
+const controlCheckbox = document.getElementById('control');
+const shiftCheckbox = document.getElementById('shift');
+const altCheckbox = document.getElementById('alt');
 
-
-const volumeSlider = document.getElementById('volume-slider');
-const volumeValue = document.getElementById('volume-value');
-
-volumeSlider.addEventListener('input', (e) => {
-  const volume = e.target.value;
-  volumeValue.textContent = `${volume}%`;
-  // Send the volume value to the Flask server
-  fetch('/update_volume', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ volume: volume })
-  });
-});
 
 const buttons_keys = document.getElementsByName('key');
 for (const button of buttons_keys) {
   button.addEventListener('click', (e) => {
-    const key = e.target.textContent;
     // Send the key to the Flask server
-    fetch('/key', {
+    fetch('/api/key', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ key: key, control: controlCheckbox.checked, shift: shiftCheckbox.checked, alt: altCheckbox.checked })
+      body: JSON.stringify({ key: e.target.value, control: controlCheckbox.checked, shift: shiftCheckbox.checked, alt: altCheckbox.checked })
     });
   });
 }
+
+function update_volume(volume) {
+  const volumeValue = document.getElementById('volume-value');
+  volumeValue.textContent = `${volume}%`;
+  fetch('/api/update_volume', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ volume: volume })
+  });
+}
+
+function genQRCode() {
+    const qrcode = new QRCode(document.getElementById("barcode"), {
+        text: `http://${document.location.host}/`,
+        width: 64,
+        height: 64,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    qrcode.mak
+}
+
+genQRCode();
