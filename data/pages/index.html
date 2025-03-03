@@ -1,111 +1,113 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="b numpad" id="numpad">
-    <h3>Numpad</h3>
-    <div class="table">
-        <div class="line">
-            <button name="key" value="7">7</button>
-            <button name="key" value="8">8</button>
-            <button name="key" value="9">9</button>
-        </div>
-        <div class="line">
-            <button name="key" value="4">4</button>
-            <button name="key" value="5">5</button>
-            <button name="key" value="6">6</button>
-        </div>
-        <div class="line">
-            <button name="key" value="1">1</button>
-            <button name="key" value="2">2</button>
-            <button name="key" value="3">3</button>
-        </div>
-        <div class="line">
-            <button name="key" value="0">0</button>
-            <button name="key" value="+">+</button>
-            <button name="key" value="-">-</button>
-        </div>
-        <div class="line">
-            <button name="key" value="enter">Enter</button>
-            <button name="key" value="backspace">Backspace</button>
-            <button name="key" value="delete">Delete</button>
-        </div>
-    </div>
-</div>
-<div class="b numpad" id="funcpad">
-    <h3>Function Pad</h3>
-    <div class="table">
-        <div class="line">
-            <button name="key" value="f1">F1</button>
-            <button name="key" value="f2">F2</button>
-            <button name="key" value="f3">F3</button>
-        </div>
-        <div class="line">
-            <button name="key" value="f4">F4</button>
-            <button name="key" value="f5">F5</button>
-            <button name="key" value="f6">F6</button>
-        </div>
-        <div class="line">
-            <button name="key" value="f7">F7</button>
-            <button name="key" value="f8">F8</button>
-            <button name="key" value="f9">F9</button>
-        </div>
-        <div class="line">
-            <button name="key" value="f10">F10</button>
-            <button name="key" value="f11">F11</button>
-            <button name="key" value="f12">F12</button>
+<div class="content">
+    <div class="b numpad" id="numpad">
+        <h3>Numpad</h3>
+        <div class="table">
+            <div class="line">
+                <button name="key" value="7">7</button>
+                <button name="key" value="8">8</button>
+                <button name="key" value="9">9</button>
+            </div>
+            <div class="line">
+                <button name="key" value="4">4</button>
+                <button name="key" value="5">5</button>
+                <button name="key" value="6">6</button>
+            </div>
+            <div class="line">
+                <button name="key" value="1">1</button>
+                <button name="key" value="2">2</button>
+                <button name="key" value="3">3</button>
+            </div>
+            <div class="line">
+                <button name="key" value="0">0</button>
+                <button name="key" value="+">+</button>
+                <button name="key" value="-">-</button>
+            </div>
+            <div class="line">
+                <button name="key" value="enter">Enter</button>
+                <button name="key" value="backspace">Backspace</button>
+                <button name="key" value="delete">Delete</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="b numpad" id="broserfunc">
-    <h3>Browser Functions</h3>
-    <span>Don't use this if any switches are on</span>
-    <div class="table">
-        <div class="line">
-            <button name="key" value="ctrl+t">New Tab</button>
-            <button name="key" value="ctrl+w">Close Tab</button>
-            <button name="key" value="ctrl+r">Refresh</button>
-        </div>
-        <div class="line">
-            <button name="key" value="ctrl+shift+n">Private Mode</button>
-            <button name="key" value="ctrl+n">New Window</button>
-            <button name="key" value="ctrl+f">Find</button>
-        </div>
-    </div>
-</div>
-<div class="b switches" id="special_switch">
-    <h3>Switches</h3>
-    <div class="table">
-        <div class="line">
-            <label class="checkbox">
-                <input type="checkbox" name="control" id="control">
-                <span>Control</span>
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" name="shift" id="shift">
-                <span>Shift</span>
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" name="alt" id="alt">
-                <span>Alt</span>
-            </label>
-        </div>
-        <div class="line">
-            <button name="key" value="capslock">Capslock</button>
-            <button name="key" value="numlock">Numlock</button>
-            <button name="key" value="scrlk">Scrolllock</button>
+    <div class="b numpad" id="funcpad">
+        <h3>Function Pad</h3>
+        <div class="table">
+            <div class="line">
+                <button name="key" value="f1">F1</button>
+                <button name="key" value="f2">F2</button>
+                <button name="key" value="f3">F3</button>
+            </div>
+            <div class="line">
+                <button name="key" value="f4">F4</button>
+                <button name="key" value="f5">F5</button>
+                <button name="key" value="f6">F6</button>
+            </div>
+            <div class="line">
+                <button name="key" value="f7">F7</button>
+                <button name="key" value="f8">F8</button>
+                <button name="key" value="f9">F9</button>
+            </div>
+            <div class="line">
+                <button name="key" value="f10">F10</button>
+                <button name="key" value="f11">F11</button>
+                <button name="key" value="f12">F12</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="b media" id="media">
-    <h3>Media Player</h3>
-    <div class="volume-slider">
-        <input type="range" id="volume-slider" min="0" max="100" onchange="update_volume(this.value)" value="{{data.volume*100}}">
-        <label for="volume-slider">Volume: <span id="volume-value">{{(data.volume*100)|rnd0}}%</span></label>
+    <div class="b numpad" id="broserfunc">
+        <h3>Browser Functions</h3>
+        <span>Don't use this if any switches are on</span>
+        <div class="table">
+            <div class="line">
+                <button name="key" value="ctrl+t">New Tab</button>
+                <button name="key" value="ctrl+w">Close Tab</button>
+                <button name="key" value="ctrl+r">Refresh</button>
+            </div>
+            <div class="line">
+                <button name="key" value="ctrl+shift+n">Private Mode</button>
+                <button name="key" value="ctrl+n">New Window</button>
+                <button name="key" value="ctrl+f">Find</button>
+            </div>
+        </div>
     </div>
-    <div class="table">
-        <div class="line">
-            <button name="key" class="alt2" value="volume_up">Volume Up</button>
-            <button name="key" class="alt1" value="volume_down">Volume Down</button>
+    <div class="b switches" id="special_switch">
+        <h3>Switches</h3>
+        <div class="table">
+            <div class="line">
+                <label class="checkbox">
+                    <input type="checkbox" name="control" id="control">
+                    <span>Control</span>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" name="shift" id="shift">
+                    <span>Shift</span>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" name="alt" id="alt">
+                    <span>Alt</span>
+                </label>
+            </div>
+            <div class="line">
+                <button name="key" value="capslock">Capslock</button>
+                <button name="key" value="numlock">Numlock</button>
+                <button name="key" value="scrlk">Scrolllock</button>
+            </div>
+        </div>
+    </div>
+    <div class="b media" id="media">
+        <h3>Media Player</h3>
+        <div class="volume-slider">
+            <input type="range" id="volume-slider" min="0" max="100" onchange="update_volume(this.value)" value="{{data.volume*100}}">
+            <label for="volume-slider">Volume: <span id="volume-value">{{(data.volume*100)|rnd0}}%</span></label>
+        </div>
+        <div class="table">
+            <div class="line">
+                <button name="key" class="alt2" value="volume_up">Volume Up</button>
+                <button name="key" class="alt1" value="volume_down">Volume Down</button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,3 @@
+@echo off
+echo Starting Internal Server...
+python C:\Users\Juaum\Documents\Projects\Python\WirelessKeyboard\server.py --startup

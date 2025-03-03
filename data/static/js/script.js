@@ -17,6 +17,16 @@ for (const button of buttons_keys) {
   });
 }
 
+function update_config(keyname, keyvalue) {
+  fetch('/api/update_config', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ keyname: keyname, keyvalue: keyvalue })
+  });
+}
+
 function update_volume(volume) {
   const volumeValue = document.getElementById('volume-value');
   volumeValue.textContent = `${volume}%`;

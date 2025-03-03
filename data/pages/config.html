@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content no-grid">
+    <div class="b">
+        <h3>Configuration</h3>
+        <div class="form-field">
+            <label for="port">Port</label>
+            <input type="text" onchange="update_config('port', this.value)" id="port" name="port" value="{{data.port}}">
+            <span class="info-warn" data-info="This will be used for open the internal server for you."><i class="fa-solid fa-circle-info"></i></span>
+        </div>
+        <div class="form-field">
+            <label for="startup">Startup</label>
+            <input type="checkbox" id="startup" name="startup" onchange="update_config('startup', this.checked)" {% if data.startup %}checked{% endif %}>
+            <span class="info-warn" data-info="This will start the app on device startup."><i class="fa-solid fa-circle-info"></i></span>
+        </div>
+        <div class="form-field">
+            <label for="autoopen">Auto Open</label>
+            <input type="checkbox" id="autoopen" name="autoopen" onchange="update_config('autoopen', this.checked)" {% if data.autoopen %}checked{% endif %}>
+            <span class="info-warn" data-info="This will open the internal server url on device startup."><i class="fa-solid fa-circle-info"></i></span>
+        </div><br>
+        <div class="pwrshll">
+            Root path: <span style="color: yellow; text-decoration: underline" href="{{data.path_root}}">{{data.path_root}}</span><br>
+            Auto run file: <span style="color: yellow; text-decoration: underline" href="{{data.auto_run_file}}">{{data.auto_run_file}}</span><br>
+            Server running at port: <span style="color: yellow;">{{data.port}}</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
